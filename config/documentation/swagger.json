@@ -1,0 +1,5012 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "API",
+		"description": "Documentation",
+		"version": "1.0"
+	},
+	"produces": ["application/json"],
+	"basePath": "/",
+	"securityDefinitions": {
+		"Bearer": {
+			"type": "apiKey",
+			"name": "authorization",
+			"in": "header"
+		}
+	},
+	"paths": {
+		"/api/v1/common/appVersion": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-common-appVersion-get",
+				"tags": ["Application Common"],
+				"description": "Get App version",
+				"parameters": [
+					{
+						"name": "authorization",
+						"in": "header",
+						"description": "accessToken of user",
+						"type": "string",
+						"value": "",
+						"required": false
+					},
+					{
+						"name": "platform",
+						"in": "query",
+						"description": "platform of APP (IOS, ANDROID or WEB)",
+						"type": "string",
+						"enum": ["IOS", "ANDROID", "WEB"],
+						"value": "",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/common/getSignedURL": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-common-getSignedURL-post",
+				"tags": ["Application Common"],
+				"description": "Get S3 signed url to upload file on s3",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "directory",
+						"in": "formData",
+						"description": "Directory in s3 for particular file",
+						"type": "string",
+						"value": "",
+						"required": true
+					},
+					{
+						"name": "fileName",
+						"in": "formData",
+						"description": "Filename of file on client device",
+						"type": "string",
+						"value": "",
+						"required": true
+					},
+					{
+						"name": "contentType",
+						"in": "formData",
+						"description": "contentType of file, if file is not an image",
+						"type": "string",
+						"value": "",
+						"required": false
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/common/s3folders": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-common-s3folders-get",
+				"tags": ["Application Common"],
+				"description": "Get S3 folders",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"responses": {}
+			}
+		},
+		"/api/v1/common/skills": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-common-skills-get",
+				"tags": ["Application Common"],
+				"description": "Get Skills",
+				"parameters": [
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "skip",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "sortBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "orderBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "search",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/common/searchSkills": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-common-searchskills-get",
+				"tags": ["Application Common"],
+				"description": "Get Skills and Suggest Skills",
+				"parameters": [
+					{
+						"name": "search",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/common/services": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-common-services-get",
+				"tags": ["Application Common"],
+				"description": "Get services",
+				"parameters": [
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "skip",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "sortBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "orderBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "search",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/common/employmentTypes": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-common-employmentTypes-get",
+				"tags": ["Application Common"],
+				"description": "Get employmentTypes",
+				"parameters": [
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "skip",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "sortBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "orderBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "search",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/common/specializations": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-common-specializations-get",
+				"tags": ["Application Common"],
+				"description": "Get specializations",
+				"parameters": [
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "skip",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "sortBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "orderBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "search",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/common/universities": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-common-universities-get",
+				"tags": ["Application Common"],
+				"description": "Get universities",
+				"parameters": [
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "skip",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "sortBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "orderBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "search",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/common/allUniversitiesAndSpecializations": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-common-allUniversitiesAndSpecializations-get",
+				"tags": ["Application Common"],
+				"description": "Get universities",
+				"parameters": [],
+				"responses": {}
+			}
+		},
+		"/api/v1/common/getAllsecurityClearanceAndtravelRequirements": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-common-getAllsecurityClearanceAndtravelRequirements-get",
+				"tags": ["Application Common"],
+				"description": "Get securityClearance And travelRequirements",
+				"parameters": [],
+				"responses": {}
+			}
+		},
+		"/api/v1/common/allIndustriesAndJobTitle": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-common-allIndustriesAndJobTitle-get",
+				"tags": ["Application Common"],
+				"description": "Get Industries",
+				"parameters": [],
+				"responses": {}
+			}
+		},
+		"/api/v1/common/travelRequirements": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-common-travelRequirements-get",
+				"tags": ["Application Common"],
+				"description": "Get travelRequirements",
+				"parameters": [
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "skip",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "sortBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "orderBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "search",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/common/securityClearence": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-common-securityClearence-get",
+				"tags": ["Application Common"],
+				"description": "Get securityClearence",
+				"parameters": [
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "skip",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "sortBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "orderBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "search",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/common/getCategories": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-common-getCategories-get",
+				"tags": ["Application Common"],
+				"description": "Get getCategories",
+				"parameters": [
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "skip",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "sortBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "orderBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "search",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/common/getCommanAll": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-common-getCommanAll-get",
+				"tags": ["Application Common"],
+				"description": "Get getCommanAll",
+				"parameters": [
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "skip",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "sortBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "orderBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "search",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/common/downloadResumeSample": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-common-allUniversitiesAndSpecializations-get",
+				"tags": ["Application Common"],
+				"description": "Get universities",
+				"parameters": [],
+				"responses": {}
+			}
+		},
+
+		"/api/v1/user/register": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-signup-post",
+				"tags": ["Application User"],
+				"description": "",
+				"parameters": [
+					{
+						"name": "name",
+						"in": "formData",
+						"description": "Name of user",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "email",
+						"in": "formData",
+						"description": "Email address of user",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "facebookId",
+						"in": "formData",
+						"description": "facebookId  of user",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "gmailId",
+						"in": "formData",
+						"description": "gmailId of user",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "appleId",
+						"in": "formData",
+						"description": "appleId of user",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "userType",
+						"in": "formData",
+						"description": "user Type 0 is Veteran 1 is Family",
+						"required": true,
+						"type": "integer",
+						"enum": [0, 1],
+						"value": ""
+					},
+					{
+						"name": "veteranRelationType",
+						"in": "formData",
+						"description": "0 => veteran, 1 => Spouse, 2 =>Child, 3=> Parents",
+						"required": false,
+						"type": "number",
+						"enum": [0, 1, 2, 3],
+						"value": ""
+					},
+					{
+						"name": "loginType",
+						"in": "formData",
+						"description": "1 => email, 2 => fb, 3 =>gmail, 4=> apple",
+						"required": true,
+						"type": "integer",
+						"enum": [1, 2, 3, 4],
+						"value": ""
+					},
+					{
+						"name": "platformType",
+						"in": "formData",
+						"description": "PlatformType of device",
+						"required": true,
+						"type": "string",
+						"enum": ["IOS", "ANDROID", "WEB"],
+						"value": ""
+					},
+					{
+						"name": "deviceToken",
+						"in": "formData",
+						"description": "Device token for PUSH notifications",
+						"required": true,
+						"type": "string",
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/verify-otp": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "verify-otp",
+				"tags": ["Application User"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "otp",
+						"in": "formData",
+						"description": "OTP received on email",
+						"type": "string",
+						"value": "",
+						"required": true
+					},
+					{
+						"name": "isType",
+						"in": "formData",
+						"description": "0 for when user request for change password so no notification send and 1 for first time signUp so welcome notification send",
+						"type": "number",
+						"enum":[0,1],
+						"value": "",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/resendSignUpOtp": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "resendSignUpOtp",
+				"tags": ["Application User"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "authorization",
+						"in": "header",
+						"description": "Authorization Token",
+						"type": "string",
+						"value": "",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/setUserPassword": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "verify-otps",
+				"tags": ["Application User"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "password",
+						"in": "formData",
+						"description": "password of user",
+						"type": "string",
+						"value": "",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/login": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "login",
+				"tags": ["Application User"],
+				"description": "",
+				"parameters": [
+					{
+						"name": "email",
+						"in": "formData",
+						"description": "Email address of user",
+						"required": true,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "password",
+						"in": "formData",
+						"description": "Password for user account as encrypted value in Base64 format",
+						"required": true,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "platformType",
+						"in": "formData",
+						"description": "PlatformType of device",
+						"required": true,
+						"type": "string",
+						"enum": ["IOS", "ANDROID", "WEB"],
+						"value": ""
+					},
+					{
+						"name": "deviceToken",
+						"in": "formData",
+						"description": "Device token for PUSH notifications",
+						"required": true,
+						"type": "string",
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/social/login": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "Sociallogin",
+				"tags": ["Application User"],
+				"description": "",
+				"parameters": [
+					{
+						"name": "email",
+						"in": "formData",
+						"description": "Email address of user",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "facebookId",
+						"in": "formData",
+						"description": "facebookId  of user",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "gmailId",
+						"in": "formData",
+						"description": "gmailId of user",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "appleId",
+						"in": "formData",
+						"description": "appleId of user",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "userType",
+						"in": "formData",
+						"description": "user Type 0 is Veteran 1 is Family",
+						"required": false,
+						"type": "integer",
+						"enum": [0, 1],
+						"value": ""
+					},
+					{
+						"name": "veteranRelationType",
+						"in": "formData",
+						"description": "0 => veteran, 1 => Spouse, 2 =>Child, 3=> Parents",
+						"required": false,
+						"type": "number",
+						"enum": [0, 1, 2, 3],
+						"value": ""
+					},
+					{
+						"name": "loginType",
+						"in": "formData",
+						"description": "2 => fb, 3 =>gmail, 4=> apple",
+						"required": true,
+						"type": "integer",
+						"enum": [2, 3, 4],
+						"value": ""
+					},
+					{
+						"name": "platformType",
+						"in": "formData",
+						"description": "PlatformType of device",
+						"required": true,
+						"type": "string",
+						"enum": ["IOS", "ANDROID", "WEB"],
+						"value": ""
+					},
+					{
+						"name": "deviceToken",
+						"in": "formData",
+						"description": "Device token for PUSH notifications",
+						"required": true,
+						"type": "string",
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/logout": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-logout-get",
+				"tags": ["Application User"],
+				"description": "logout",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "deviceToken",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"value": "",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/notificationSetting": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "verify-otp",
+				"tags": ["Application User notification setting"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "notificationStatus",
+						"in": "formData",
+						"description": "0 is on 1 is off",
+						"type": "number",
+						"enum":[0,1],
+						"value": "",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/forgotPassword": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-forgotPassword-get",
+				"tags": ["Application User"],
+				"description": "forgot Password",
+				"parameters": [
+					{
+						"name": "email",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"value": "",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/changePassword": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-changePassword-get",
+				"tags": ["Application User"],
+				"description": "Change Password",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "oldPassword",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"value": "",
+						"required": true
+					},
+					{
+						"name": "newPassword",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"value": "",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/uploadAuthenticityDocuments": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "upload-Authenticity-Documents",
+				"tags": ["Application User"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "serviceId",
+						"in": "formData",
+						"description": "serviceId",
+						"type": "string",
+						"required": true
+					},
+					{
+						"name": "militaryJobTitle",
+						"in": "formData",
+						"description": "militaryJobTitle",
+						"type": "string",
+						"required": true
+					},
+					{
+						"name": "authenticityDocumentLink",
+						"in": "formData",
+						"description": "authenticityDocumentLink",
+						"type": "string",
+						"required": true
+					},
+					{
+						"name": "veteranRelationDocumentLink",
+						"in": "formData",
+						"description": "veteranRelationDocumentLink",
+						"type": "string",
+						"required": false
+					},
+					{
+						"name": "veteranRelationName",
+						"in": "formData",
+						"description": "veteranRelationName",
+						"type": "string",
+						"required": false
+					},
+					{
+						"name": "userType",
+						"in": "formData",
+						"description": "user Type 0 is Veteran 1 is Family",
+						"required": true,
+						"type": "integer",
+						"enum": [0, 1],
+						"value": ""
+					},
+					{
+						"name": "honorAwardArray",
+						"in": "formData",
+						"description": "[{'name':'abc', 'orderByIndex':1}]",
+						"type": "string",
+						"value": "",
+						"required": false
+					},
+					{
+						"name": "serviceDisabled",
+						"in": "formData",
+						"description": "serviceDisabled",
+						"type": "integer",
+						"enum": [0, 1],
+						"required": false
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/uploadAuthenticityDocumentsV1": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "upload-Authenticity-DocumentsV1",
+				"tags": ["Application User"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "serviceId",
+						"in": "formData",
+						"description": "serviceId",
+						"type": "string",
+						"required": true
+					},
+					{
+						"name": "otherServiceTitle",
+						"in": "formData",
+						"description": "otherServiceTitle",
+						"type": "string",
+						"required": false
+					},
+					{
+						"name": "militaryJobTitle",
+						"in": "formData",
+						"description": "militaryJobTitle",
+						"type": "string",
+						"required": true
+					},
+					{
+						"name": "authenticityDocumentLink",
+						"in": "formData",
+						"description": "authenticityDocumentLink",
+						"type": "string",
+						"required": true
+					},
+					{
+						"name": "veteranRelationDocumentLink",
+						"in": "formData",
+						"description": "veteranRelationDocumentLink",
+						"type": "string",
+						"required": false
+					},
+					{
+						"name": "veteranRelationName",
+						"in": "formData",
+						"description": "veteranRelationName",
+						"type": "string",
+						"required": false
+					},
+					{
+						"name": "userType",
+						"in": "formData",
+						"description": "user Type 0 is Veteran 1 is Family",
+						"required": true,
+						"type": "integer",
+						"enum": [0, 1],
+						"value": ""
+					},
+					{
+						"name": "honorAwardArray",
+						"in": "formData",
+						"description": "[{'name':'abc', 'orderByIndex':1}]",
+						"type": "string",
+						"value": "",
+						"required": false
+					},
+					{
+						"name": "serviceDisabled",
+						"in": "formData",
+						"description": "serviceDisabled",
+						"type": "integer",
+						"enum": [0, 1],
+						"required": false
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/updateProfile": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "update-Profile",
+				"tags": ["Application User"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "name",
+						"in": "formData",
+						"description": "Name of user",
+						"type": "string",
+						"value": "",
+						"required": false
+					},
+					{
+						"name": "profileImage",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"value": "",
+						"required": false
+					},
+					{
+						"name": "pronounsType",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"value": "",
+						"required": false
+					},
+					{
+						"name": "customPronouns",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"value": "",
+						"required": false
+					},
+					{
+						"name": "bio",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"value": "",
+						"required": false
+					},
+					{
+						"name": "countryCode",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"value": "",
+						"required": false
+					},
+					{
+						"name": "phoneNumber",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"value": "",
+						"required": false
+					},
+					{
+						"name": "dateOfBirth",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"value": "",
+						"required": false
+					},
+					{
+						"name": "gender",
+						"in": "formData",
+						"description": "0 => Male, 1 => Female, 2 => Non-binary",
+						"type": "number",
+						"enum": [0, 1, 2],
+						"value": "",
+						"required": true
+					},
+					{
+						"name": "honorAwardArray",
+						"in": "formData",
+						"description": "[{'name':'abc', 'orderByIndex':1}]",
+						"type": "string",
+						"value": "",
+						"required": false
+					},
+					{
+						"name": "linkedInLink",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"value": "",
+						"required": false
+					},
+					{
+						"name": "scoreLink",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"value": "",
+						"required": false
+					},
+					{
+						"name": "location",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"value": "",
+						"required": false
+					},
+					{
+						"name": "zipCode",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"value": "",
+						"required": false
+					},
+					{
+						"name": "latitude",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"value": "",
+						"required": false
+					},
+					{
+						"name": "longitude",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"value": "",
+						"required": false
+					},
+					{
+						"name": "serviceDisabled",
+						"in": "formData",
+						"description": "1 => yes 2 => no",
+						"type": "number",
+						"enum": [0, 1, 2],
+						"value": "",
+						"required": false
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/userMobileVerify": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "update-Profile-mobile-verify",
+				"tags": ["Application User"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "countryCode",
+						"in": "formData",
+						"description": "mobile country Code",
+						"type": "string",
+						"value": "",
+						"required": true
+					},
+					{
+						"name": "mobileNo",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"value": "",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/userMobileVerifyOtp": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "update-Profile-mobile-verify-otp",
+				"tags": ["Application User"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "otp",
+						"in": "formData",
+						"description": "mobile otp",
+						"type": "string",
+						"value": "",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/getResume": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "getResume",
+				"tags": ["User Build Resume"],
+				"description": "Resume preview",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/getSkills": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "add-getSkills",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/addUpdateSkills": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "add-Update-Skills-resume",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "skillIdsArray",
+						"in": "formData",
+						"description": "[{'skillId':10}, {'skillId':10},{'skillId':10}]",
+						"type": "string",
+						"value": "",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/addUpdateSkillsV1": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "add-Update-Skills-resume",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "skillIdsArray",
+						"in": "formData",
+						"description": "[{'skillId':10, 'otherTitle': 'name'}]",
+						"type": "string",
+						"value": "",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/getEducation": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "get-Eduction",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/addEducation": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "add-Eduction",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"universityId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"specializationId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"fromDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"toDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"description": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"gpa": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"isPursuing": {
+									"description": "0 => no, 1 => yes",
+									"type": "number",
+									"enum": [0, 1],
+									"required": false
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/addEducationV1": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "add-Eduction",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"universityId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"specializationId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"otherTitleUniveristy": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"otherTitleSpecialization": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"fromDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"toDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"description": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"gpa": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"isPursuing": {
+									"description": "0 => no, 1 => yes",
+									"type": "number",
+									"enum": [0, 1],
+									"required": false
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/updateEducation": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "update-Education",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"id": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": true
+								},
+								"universityId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"specializationId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"fromDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"toDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"description": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"gpa": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"isPursuing": {
+									"description": "0 => no, 1 => yes",
+									"type": "number",
+									"enum": [0, 1],
+									"required": false
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/updateEducationV1": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "update-Education",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"id": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": true
+								},
+								"universityId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"specializationId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"otherTitleUniveristy": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"otherTitleSpecialization": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"fromDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"toDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"description": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"gpa": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"isPursuing": {
+									"description": "0 => no, 1 => yes",
+									"type": "number",
+									"enum": [0, 1],
+									"required": false
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/deleteEducation": {
+			"delete": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "delete-education",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "formData",
+						"description": "id of eduction",
+						"type": "string",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/getWorkExperience": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "get-work-experieince",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/addWorkExperience": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "add-addWorkExperience",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"employementTypeId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"jobTitle": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"fromDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"toDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"description": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"companyName": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"underContractOf": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"location": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"zipCode": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"latitude": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"longitude": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"isCurrentlyRole": {
+									"description": "0 => no, 1 => yes",
+									"type": "number",
+									"enum": [0, 1],
+									"required": false
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/updateWorkExperience": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "update-updateWorkExperience",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"id": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": true
+								},
+								"employementTypeId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"jobTitle": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"fromDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"toDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"description": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"companyName": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"underContractOf": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"location": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"zipCode": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"latitude": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"longitude": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"isCurrentlyRole": {
+									"description": "0 => no, 1 => yes",
+									"type": "number",
+									"enum": [0, 1],
+									"required": false
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/deleteWorkExperience": {
+			"delete": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "delete-Work-Experience",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "formData",
+						"description": "id of Experience",
+						"type": "string",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/getVolunteerExperience": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "get-Volunteer-experieince",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/addVolunteerExperience": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "add-addVolunteerExperience",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"employementTypeId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"organization": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"fromDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"toDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"description": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"role": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"cause": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"isCurrentlyRole": {
+									"description": "0 => no, 1 => yes",
+									"type": "number",
+									"enum": [0, 1],
+									"required": false
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/updateVolunteerExperience": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "update-updateVolunteerExperience",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"id": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"employementTypeId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"organization": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"fromDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"toDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"description": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"role": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"cause": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"isCurrentlyRole": {
+									"description": "0 => no, 1 => yes",
+									"type": "number",
+									"enum": [0, 1],
+									"required": false
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/deleteVolunteerExperience": {
+			"delete": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "delete-Volunteer-Experience",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "formData",
+						"description": "id of eduction",
+						"type": "string",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/getProjectTaken": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "get-ProjectTaken",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/addProjectTaken": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "add-ProjectTaken",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"employementTypeId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"projectTitle": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"fromDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"toDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"description": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"associatedWith": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"location": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"zipCode": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"latitude": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"longitude": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"jobTitle": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"isCurrentlyOngoing": {
+									"description": "0 => no, 1 => yes",
+									"type": "number",
+									"enum": [0, 1],
+									"required": false
+								},
+								"projectMembers": {
+									"description": "List of projectMembers",
+									"schema": {
+										"$ref": "#/definitions/members"
+									},
+									"example": [
+										{
+											"name": "test user",
+											"email": "test@gmail.com"
+										}
+									]
+								},
+								"projectLinks": {
+									"description": "List of projectLinks",
+									"schema": {
+										"$ref": "#/definitions/links"
+									},
+									"example": ["link1", "link2"]
+								},
+								"projectMedia": {
+									"description": "List of projectMedia",
+									"schema": {
+										"$ref": "#/definitions/documents"
+									},
+									"example": [
+										{
+											"name": "sadafd",
+											"fileName": "dfdaf.pdf"
+										}
+									]
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/updateProjectTaken": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "update-ProjectTaken",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"id": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": true
+								},
+								"employementTypeId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"projectTitle": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"fromDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"toDate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"description": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"associatedWith": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"location": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"zipCode": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"latitude": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"longitude": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"jobTitle": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"isCurrentlyOngoing": {
+									"description": "0 => no, 1 => yes",
+									"type": "number",
+									"enum": [0, 1],
+									"required": false
+								},
+								"projectMembers": {
+									"description": "List of projectMembers",
+									"schema": {
+										"$ref": "#/definitions/members"
+									},
+									"example": [
+										{
+											"name": "test user",
+											"email": "test@gmail.com"
+										}
+									]
+								},
+								"projectLinks": {
+									"description": "List of projectLinks",
+									"schema": {
+										"$ref": "#/definitions/links"
+									},
+									"example": ["link1", "link2"]
+								},
+								"projectMedia": {
+									"description": "List of projectMedia",
+									"schema": {
+										"$ref": "#/definitions/documents"
+									},
+									"example": [
+										{
+											"name": "sadafd",
+											"fileName": "dfdaf.pdf"
+										}
+									]
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/deleteProjectTaken": {
+			"delete": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "delete-ProjectTaken",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "formData",
+						"description": "id of eduction",
+						"type": "string",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/getAwardsAndHonors": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "get-AwardsAndHonors",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/addAwardsAndHonors": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "add-AwardsAndHonors",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"name": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"issuer": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"issuesedOn": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"associatedWith": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"description": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/updateAwardsAndHonors": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "update-AwardsAndHonors",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"id": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": true
+								},
+								"name": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"issuer": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"issuesedOn": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"associatedWith": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"description": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/deleteAwardsAndHonors": {
+			"delete": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "delete-AwardsAndHonors",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "formData",
+						"description": "id of eduction",
+						"type": "string",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/getLicenseAndCertification": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "get-LicenseAndCertification",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/addLicenseAndCertification": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "add-LicenseAndCertification",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"name": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"attestedByAuthority": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"credentialUrl": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"certificationNo": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"issuesedOn": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"expirydate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/updateLicenseAndCertification": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "update-LicenseAndCertification",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"id": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": true
+								},
+								"name": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"attestedByAuthority": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"credentialUrl": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"certificationNo": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"issuesedOn": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"expirydate": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/deleteLicenseAndCertification": {
+			"delete": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "delete-LicenseAndCertification",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "formData",
+						"description": "id of eduction",
+						"type": "string",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/getLanguage": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "get-Language",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/addLanguage": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "add-Language",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"language": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"proficiency": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/addLanguageMultiple": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "add-Language-mulitple",
+				"tags": ["User Build Resume"],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"description": "Add language multiple",
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"languageProficiency": {
+									"type": "array",
+									"required": false,
+									"items": {
+										"$ref": "#/definitions/languageProficiency"
+									},
+									"example": [
+										{ "language": "abc", "proficiency": "xyz" },
+										{ "language": "abc", "proficiency": "xyz" }
+									]
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/updateLanguage": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "update-Language",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"id": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": true
+								},
+								"language": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"proficiency": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/deleteLanguage": {
+			"delete": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "delete-Language",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "formData",
+						"description": "id of language",
+						"type": "string",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/getJobPreference": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "get-JobPreference",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/addJobPreference": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "add-JobPreference",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"serviceId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"employementTypeId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"desiredSalary": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"desiredSalaryType": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"workPlace": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"dateOfAvailability": {
+									"description": "YYYY-MM-DD",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"securityClearance": {
+									"description": "List of securityClearance",
+									"schema": {
+										"$ref": "#/definitions/links"
+									},
+									"example": ["id1", "id2"]
+								},
+								"travelRequirement": {
+									"description": "List of travelRequirement",
+									"schema": {
+										"$ref": "#/definitions/links"
+									},
+									"example": ["id1", "id2"]
+								},
+								"willingToRelocate": {
+									"description": "0 => no, 1 => yes",
+									"type": "number",
+									"enum": [0, 1],
+									"required": false
+								},
+								"covidVaccinated": {
+									"description": "0 => no, 1 => yes",
+									"type": "number",
+									"enum": [0, 1],
+									"required": false
+								},
+
+								"industryIds": {
+									"description": "List of industryIds",
+									"schema": {
+										"$ref": "#/definitions/links"
+									},
+									"example": ["link1", "link2"]
+								},
+								"jobTitleIds": {
+									"description": "List of jobTitleIds",
+									"schema": {
+										"$ref": "#/definitions/links"
+									},
+									"example": ["link1", "link2"]
+								},
+								"locations": {
+									"description": "List of locations",
+									"schema": {
+										"$ref": "#/definitions/locations"
+									},
+									"example": [
+										{
+											"location": "test user",
+											"zipCode": "1211212",
+											"latitude": "12.11212",
+											"longitude": "12.11212"
+										}
+									]
+								},
+								"tourOfDuties": {
+									"description": "List of tourOfDuties",
+									"schema": {
+										"$ref": "#/definitions/locations"
+									},
+									"example": [
+										{
+											"location": "test user",
+											"zipCode": "1211212",
+											"latitude": "12.11212",
+											"longitude": "12.11212",
+											"fromDate": "YYYY-MM-DD",
+											"toDate": "YYYY-MM-DD"
+										}
+									]
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/addJobPreferenceV1": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "add-JobPreferenceV1",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"serviceId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"employementTypeId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"desiredSalary": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"desiredSalaryType": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"otherServiceTitle": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"workPlace": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"dateOfAvailability": {
+									"description": "YYYY-MM-DD",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"securityClearance": {
+									"description": "List of securityClearance [{'securityClearanceId' :'id', otherTitle: 'name'}]",
+									"schema": {
+										"$ref": "#/definitions/links"
+									},
+									"example": [
+										{ "securityClearanceId": "id", "otherTitle": "name" }
+									]
+								},
+								"travelRequirement": {
+									"description": "List of travelRequirement [{'travelRequirementId' :'id', otherTitle: 'name'}]",
+									"schema": {
+										"$ref": "#/definitions/links"
+									},
+									"example": [
+										{ "travelRequirementId": "id", "otherTitle": "name" }
+									]
+								},
+								"willingToRelocate": {
+									"description": "0 => no, 1 => yes",
+									"type": "number",
+									"enum": [0, 1],
+									"required": false
+								},
+								"covidVaccinated": {
+									"description": "0 => no, 1 => yes",
+									"type": "number",
+									"enum": [0, 1],
+									"required": false
+								},
+
+								"industryIds": {
+									"description": "[{'industryId ' :'id', otherTitle: 'name'}]",
+									"schema": {
+										"$ref": "#/definitions/links"
+									},
+									"example": [{ "industryId": "id", "otherTitle": "name" }]
+								},
+								"jobTitleIds": {
+									"description": "List of jobTitleIds [{'jobTitleId' :'id', otherTitle: 'name'}]",
+									"schema": {
+										"$ref": "#/definitions/links"
+									},
+									"example": [{ "jobTitleId": "id", "otherTitle": "name" }]
+								},
+								"locations": {
+									"description": "List of locations",
+									"schema": {
+										"$ref": "#/definitions/locations"
+									},
+									"example": [
+										{
+											"location": "test user",
+											"zipCode": "1211212",
+											"latitude": "12.11212",
+											"longitude": "12.11212"
+										}
+									]
+								},
+								"tourOfDuties": {
+									"description": "List of tourOfDuties",
+									"schema": {
+										"$ref": "#/definitions/locations"
+									},
+									"example": [
+										{
+											"location": "test user",
+											"zipCode": "1211212",
+											"latitude": "12.11212",
+											"longitude": "12.11212",
+											"fromDate": "YYYY-MM-DD",
+											"toDate": "YYYY-MM-DD"
+										}
+									]
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/updateJobPreference": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "update-JobPreference",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"id": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": true
+								},
+								"serviceId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"employementTypeId": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"desiredSalary": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"desiredSalaryType": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"workPlace": {
+									"description": "",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"dateOfAvailability": {
+									"description": "YYYY-MM-DD",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"securityClearance": {
+									"description": "List of securityClearance",
+									"schema": {
+										"$ref": "#/definitions/links"
+									},
+									"example": ["id1", "id2"]
+								},
+								"travelRequirement": {
+									"description": "List of travelRequirement",
+									"schema": {
+										"$ref": "#/definitions/links"
+									},
+									"example": ["id1", "id2"]
+								},
+								"willingToRelocate": {
+									"description": "0 => no, 1 => yes",
+									"type": "number",
+									"enum": [0, 1],
+									"required": false
+								},
+								"covidVaccinated": {
+									"description": "0 => no, 1 => yes",
+									"type": "number",
+									"enum": [0, 1],
+									"required": false
+								},
+
+								"industryIds": {
+									"description": "List of industryIds",
+									"schema": {
+										"$ref": "#/definitions/links"
+									},
+									"example": ["link1", "link2"]
+								},
+								"jobTitleIds": {
+									"description": "List of jobTitleIds",
+									"schema": {
+										"$ref": "#/definitions/links"
+									},
+									"example": ["link1", "link2"]
+								},
+								"locations": {
+									"description": "List of locations",
+									"schema": {
+										"$ref": "#/definitions/locations"
+									},
+									"example": [
+										{
+											"location": "test user",
+											"zipCode": "1211212",
+											"latitude": "12.11212",
+											"longitude": "12.11212"
+										}
+									]
+								},
+								"tourOfDuties": {
+									"description": "List of tourOfDuties",
+									"schema": {
+										"$ref": "#/definitions/locations"
+									},
+									"example": [
+										{
+											"location": "test user",
+											"zipCode": "1211212",
+											"latitude": "12.11212",
+											"longitude": "12.11212",
+											"fromDate": "YYYY-MM-DD",
+											"toDate": "YYYY-MM-DD"
+										}
+									]
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/buildResume/deleteJobPreference": {
+			"delete": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "delete-JobPreference",
+				"tags": ["User Build Resume"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "formData",
+						"description": "id of eduction",
+						"type": "string",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/uploadDocuments": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "uploadDocuments",
+				"tags": ["Application User"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "resumeName",
+						"in": "formData",
+						"description": "Documents resume name of user",
+						"type": "string",
+						"required": true
+					},
+					{
+						"name": "resumeDocuments",
+						"in": "formData",
+						"description": "Documents resume file of user",
+						"type": "string",
+						"required": true
+					},
+					{
+						"name": "documentsType",
+						"in": "formData",
+						"description": "0 => resume",
+						"type": "integer",
+						"enum": [0, 1],
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/updateUploadDocuments": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "UpdateduploadDocuments",
+				"tags": ["Application User"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "formData",
+						"description": "Documents id of user",
+						"type": "string",
+						"required": true
+					},
+					{
+						"name": "resumeName",
+						"in": "formData",
+						"description": "Documents resume name of user",
+						"type": "string",
+						"required": true
+					},
+					{
+						"name": "resumeDocuments",
+						"in": "formData",
+						"description": "Documents resume file of user",
+						"type": "string",
+						"required": true
+					},
+					{
+						"name": "documentsType",
+						"in": "formData",
+						"description": "0 => resume",
+						"type": "integer",
+						"enum": [0, 1],
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/getAllUploadDocuments": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "get-JobPreference",
+				"tags": ["Application User"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "documentsType",
+						"in": "query",
+						"description": "0 => resume",
+						"type": "integer",
+						"enum": [0, 1],
+						"required": false
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/getUserDetails": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "get-user-details",
+				"tags": ["Application User"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/recruiterlist": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "get-recruiterlist-list",
+				"tags": ["Application User"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "skip",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "search",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/recruiterDetails/{id}": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "get-recruiter-by-id-Details",
+				"tags": ["Application User"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "",
+						"type": "string",
+						"format": "uuid",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/deleteUploadDocuments": {
+			"delete": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "delete-Doucment",
+				"tags": ["Application User"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "formData",
+						"description": "id of doucment",
+						"type": "string",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/deleteUserAccount": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "delete-User-Account",
+				"tags": ["Application User"],
+				"description": "Delete user account",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/documentsParsing": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "uploadDocuments Parsing",
+				"tags": ["Application User"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "resumeName",
+						"in": "formData",
+						"description": "Documents resume name of user",
+						"type": "string",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/downloadResume": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "download Resume",
+				"tags": ["Application User"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "templateSample",
+						"in": "formData",
+						"description": "Documents resume name of user",
+						"type": "string",
+						"enum": ["1", "2", "3"],
+						"required": true
+					},
+					{
+						"name": "templateFormate",
+						"in": "formData",
+						"description": "Documents resume name of user pdf",
+						"type": "string",
+						"enum": ["pdf"],
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/report": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "get-user-report-list",
+				"tags": ["Application User Report"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/searchAppearanceGraph": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "get-user-search-appearance-list",
+				"tags": ["Application User Report search Graph"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "filter",
+						"in": "query",
+						"description": "filter",
+						"type": "string",
+						"enum": ["7Days", "30Days", "90Days"],
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/searchViewGraph": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "get-user-view-appearance-list",
+				"tags": ["Application User Report view Graph"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "filter",
+						"in": "query",
+						"description": "filter",
+						"type": "string",
+						"enum": ["7Days", "30Days", "90Days"],
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/viewlisting": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "get-user-view-list",
+				"tags": ["Application User Report view listing"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "filter",
+						"in": "query",
+						"description": "filter",
+						"type": "string",
+						"enum": ["7Days", "30Days", "90Days"],
+						"required": true
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "skip",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/user/recruiterAction": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "get-user-view-appearance-list",
+				"tags": ["Application User Report view Graph"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "filter",
+						"in": "query",
+						"description": "filter",
+						"type": "string",
+						"enum": ["All", "view", "download", "mail"],
+						"required": true
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "skip",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/notification/": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "admin-v1-admin-notification-create-POST",
+				"tags": ["Notification"],
+				"description": "Add Notification  by admin",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "title",
+						"in": "formData",
+						"description": "title is required",
+						"type": "string",
+						"value": "",
+						"required": true
+					},
+					{
+						"name": "message",
+						"in": "formData",
+						"description": "message is required",
+						"type": "string",
+						"value": "",
+						"required": true
+					},
+					{
+						"name": "notificationType",
+						"in": "formData",
+						"description": "notificationType is required",
+						"type": "string",
+						"value": "",
+						"required": true
+					},
+					{
+						"name": "userType",
+						"in": "formData",
+						"type": "number",
+						"enum": [0, 1, 2, 3, 4, 5, 6],
+						"description": "0 =>choose by user, 1 => IOS, 2 =>ANDROID, 3 => WEB, 4 => Recruiter, 5 =>Sub_Admin, 6 => All User",
+						"required": true
+					},
+					{
+						"name": "isRead",
+						"in": "formData",
+						"type": "number",
+						"enum": [0, 1],
+						"description": "",
+						"required": true
+					}
+				],
+				"responses": {}
+			},
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "admin-v1-admin-notificationlist-get",
+				"tags": ["Notification"],
+				"description": "Get Notification  by admin",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "skip",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "sortBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "orderBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "search",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			},
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "admin-v1-admin-notification-update-put",
+				"tags": ["Notification"],
+				"description": "Update Notification by admin",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"format": "uuid",
+						"required": true
+					},
+					{
+						"name": "isRead",
+						"in": "formData",
+						"type": "number",
+						"enum": [0, 1, 2],
+						"description": "0 for unread 1 for read and 2 for all read"
+					}
+				],
+				"responses": {}
+			},
+			"delete": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "admin-v1-admin-notification-delete",
+				"tags": ["Notification"],
+				"description": "Delete Notification by admin",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"format": "uuid",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/notificationTurnOff": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "user-v1-notification-create-POST",
+				"tags": ["Notification Turn Off"],
+				"description": "Add Notification turn off  by user",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "recruiterId",
+						"in": "formData",
+						"description": "recruiterId is required",
+						"type": "string",
+						"value": "",
+						"required": false
+					}
+				],
+				"responses": {}
+			},
+			"delete": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "user-v1-notification-delete",
+				"tags": ["Notification Turn Off"],
+				"description": "Delete Notification turn off by user",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"format": "uuid",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/notification/block": {
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "admin-v1-admin-notification-block-put",
+				"tags": ["Notification"],
+				"description": "Update Notification by admin",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"format": "uuid",
+						"required": true
+					},
+					{
+						"name": "isBlocked",
+						"in": "formData",
+						"description": "isBlocked is required",
+						"type": "string",
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/notification/detail/{id}": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "admin-v1-notification-detail-{id}-get",
+				"tags": ["Notification"],
+				"description": "Get Notification  by admin",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "",
+						"type": "string",
+						"format": "uuid",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/jobs/apply": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "add-question-respone",
+				"tags": ["User Apply And Save Job"],
+				"description": "",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"jobPostId": {
+									"description": "Job Id",
+									"type": "string",
+									"value": "",
+									"required": false
+								},
+								"response": {
+									"type": "array",
+									"required": true,
+									"items": {
+										"$ref": "#/definitions/response"
+									}
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			},
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "usdr-v1-job-applyed-list-get",
+				"tags": ["User Apply And Save Job"],
+				"description": "Get applyed job  by user",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "skip",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "sortBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "orderBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "search",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			},
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "user-v1-user-applyed-job-update-put",
+				"tags": ["User Apply And Save Job"],
+				"description": "Update User applyed job by user",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"format": "uuid",
+						"required": true
+					},
+					{
+						"name": "jobPostId",
+						"in": "formData",
+						"description": "Job id is required",
+						"type": "string",
+						"value": "",
+						"required": true
+					}
+				],
+				"responses": {}
+			},
+			"delete": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "User-v1-user-applyed-job-delete",
+				"tags": ["User Apply And Save Job"],
+				"description": "Delete user applyed job",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "jobPostId",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"format": "uuid",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/jobs/apply/detail/{id}": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "user-v1-user-applyed-job-{id}-get",
+				"tags": ["User Apply And Save Job"],
+				"description": "Get specific applyed job detail  by user",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "",
+						"type": "string",
+						"format": "uuid",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/jobs/save": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "user-v1-user-job-save-create-POST",
+				"tags": ["User Apply And Save Job"],
+				"description": "Add save job  by user",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "jobPostId",
+						"in": "formData",
+						"description": "Job id is required",
+						"type": "string",
+						"value": "",
+						"required": true
+					}
+				],
+				"responses": {}
+			},
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "user-v1-user-save-job-get",
+				"tags": ["User Apply And Save Job"],
+				"description": "Get User saved Job",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "skip",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "sortBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "orderBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "search",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			},
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "user-v1-user-Saved-job-update-put",
+				"tags": ["User Apply And Save Job"],
+				"description": "Update Saved by User",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"format": "uuid",
+						"required": true
+					},
+					{
+						"name": "jobPostId",
+						"in": "formData",
+						"description": "Job id is required",
+						"type": "string",
+						"value": "",
+						"required": true
+					}
+				],
+				"responses": {}
+			},
+			"delete": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "user-v1-user-saved-job-delete",
+				"tags": ["User Apply And Save Job"],
+				"description": "Delete User saved Job",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "jobPostId",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"format": "uuid",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/jobs/save/detail/{id}": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "user-v1-user-saved-job-detail-{id}-get",
+				"tags": ["User Apply And Save Job"],
+				"description": "Get User saved Job",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "",
+						"type": "string",
+						"format": "uuid",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/jobs/JobsList": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-user-jobs-get",
+				"tags": ["Manufacturing Jobs"],
+				"description": "Get All jobs",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "skip",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "sortBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "orderBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "search",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/jobs/JobsList/{id}": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-common-{id}-get",
+				"tags": ["Manufacturing Jobs"],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"description": "Get Job details by id",
+
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "",
+						"type": "string",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/jobs/{id}": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "user-v1-specific-job-detail-{id}-get",
+				"tags": ["Number of user applyed for specific job"],
+				"description": "Get detail of how many user apply for the  Job",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "",
+						"type": "string",
+						"format": "uuid",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/home/recommendedJob": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "user-v1-user-recommended-job-get",
+				"tags": ["User Recommended Job"],
+				"description": "Get User recommended Job",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+
+				"responses": {}
+			}
+		},
+		"/api/v1/home/latestJob": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "user-v1-user-latest-job-get",
+				"tags": ["Latest Job"],
+				"description": "Get Latest Job",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+
+				"responses": {}
+			}
+		},
+		"/api/v1/home": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "user-v1-home-screen-get",
+				"tags": ["Home Screen"],
+				"description": "Get detail of Home screen users",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "search",
+						"in": "query",
+						"description": "Serach on the bases of job title",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/home/guestUser": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "user-v1-home-screen-get",
+				"tags": ["Home Screen"],
+				"description": "Get detail of Home screen users",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "search",
+						"in": "query",
+						"description": "Serach on the bases of job title",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+
+		"/api/v1/home/jobpost": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "recruiter-v1-recruiter-filter-data-post",
+				"tags": ["Home Screen"],
+				"description": "Filter Jobs",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"limit": {
+									"in": "formData",
+									"type": "integer",
+									"required": false,
+									"value": "10"
+								},
+								"skip": {
+									"in": "formData",
+									"type": "integer",
+									"required": false,
+									"value": "0"
+								},
+
+								"search": {
+									"in": "formData",
+									"type": "string",
+									"required": false
+								},
+								"sortBy": {
+									"in": "formData",
+									"type": "string",
+									"required": false
+								},
+								"orderBy": {
+									"in": "formData",
+									"type": "string",
+									"required": false
+								},
+								"latitude": {
+									"in": "formData",
+									"description": "",
+									"required": false,
+									"type": "string",
+									"allowReserved": true,
+									"value": ""
+								},
+								"longitude": {
+									"in": "formData",
+									"description": "",
+									"required": false,
+									"type": "string",
+									"allowReserved": true,
+									"value": ""
+								},
+								"location": {
+									"in": "formData",
+									"description": "",
+									"required": false,
+									"type": "string",
+									"allowReserved": true,
+									"value": ""
+								},
+								"minimum": {
+									"in": "formData",
+									"description": "",
+									"required": false,
+									"type": "number",
+									"allowReserved": true,
+									"value": ""
+								},
+								"maximum": {
+									"in": "formData",
+									"description": "",
+									"required": false,
+									"type": "number",
+									"allowReserved": true,
+									"value": ""
+								},
+								"rate": {
+									"in": "formData",
+									"description": "",
+									"required": false,
+									"type": "string",
+									"allowReserved": true,
+									"value": ""
+								},
+								"industryId": {
+									"in": "formData",
+									"description": "['industryId']",
+									"schema": {
+										"$ref": "#/definitions/industryIdmembers"
+									},
+									"example": ["id1", "id2"],
+									"required": false
+								},
+								"employementTypeId": {
+									"in": "formData",
+									"description": "['employementTypeId']",
+									"schema": {
+										"$ref": "#/definitions/employementTypeIdmembers"
+									},
+									"example": ["id1", "id2"],
+									"required": false
+								},
+								"categoryId": {
+									"in": "formData",
+									"description": "['categoryId']",
+									"schema": {
+										"$ref": "#/definitions/categoryIdmembers"
+									},
+									"example": ["id1", "id2"],
+									"required": false
+								},
+								"benefitsId": {
+									"in": "formData",
+									"description": "['benefitsIds']",
+									"schema": {
+										"$ref": "#/definitions/benefitsIdmembers"
+									},
+									"example": ["id1", "id2"],
+									"required": false
+								},
+								"personalitiesIds": {
+									"in": "formData",
+									"description": "['personalitiesIds']",
+									"schema": {
+										"$ref": "#/definitions/personalitiesIdmembers"
+									},
+									"example": ["id1", "id2"],
+									"required": false
+								},
+								"travelRequirementId": {
+									"in": "formData",
+									"description": "['personalitiesIds']",
+									"schema": {
+										"$ref": "#/definitions/travelRequirementIdmembers"
+									},
+									"example": ["id1", "id2"],
+									"required": false
+								},
+								"jobEligibleForId": {
+									"in": "formData",
+									"description": "['personalitiesIds']",
+									"schema": {
+										"$ref": "#/definitions/jobEligibleForIdmembers"
+									},
+									"example": ["id1", "id2"],
+									"required": false
+								},
+								"scheduleId": {
+									"in": "formData",
+									"description": "['personalitiesIds']",
+									"schema": {
+										"$ref": "#/definitions/scheduleIdmemebers"
+									},
+									"example": ["id1", "id2"],
+									"required": false
+								},
+								"workPlaceLocation": {
+									"in": "formData",
+									"description": "['personalitiesIds']",
+									"schema": {
+										"$ref": "#/definitions/workPlaceLocationmembers"
+									},
+									"example": ["id1", "id2"],
+									"required": false
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/jobs/companyPostJob/{id}": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "user-v1-companyPostJob-job-detail-{id}-get",
+				"tags": ["Company Post Job Detail"],
+				"description": "Get detail of how many job post by company",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "",
+						"type": "string",
+						"format": "uuid",
+						"required": true
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					},
+					{
+						"name": "skip",
+						"in": "query",
+						"description": "",
+						"type": "number",
+						"required": false
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/api/v1/cron/notActiveUserNotification": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "user-v1-notActiveUserNotification-get",
+				"tags": ["Notifcation Not Active User"],
+				"description": "Notifcation Not Active User",
+				"parameters": [],
+				"responses": {}
+			}
+		},
+		"/api/v1/cron/updateResumeNotification": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "user-v1-updateResumeNotification-get",
+				"tags": ["Notifcation Not Active User"],
+				"description": "Notifcation Not Active User",
+				"parameters": [],
+				"responses": {}
+			}
+		}
+	},
+	"definitions": {
+		"languageProficiency": {
+			"type": "object",
+			"properties": {
+				"languageProficiency": {
+					"type": "string"
+				}
+			},
+			"example": [
+				{ "language": "abc", "proficiency": "xyz" },
+				{ "language": "abc", "proficiency": "xyz" }
+			]
+		},
+		"ids": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"example": ["id1", "id2"]
+		},
+		"links": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"example": ["link1", "link2"]
+		},
+		"members": {
+			"type": "array",
+			"items": {
+				"type": "object"
+			},
+			"example": [
+				{
+					"name": "test user",
+					"email": "test@gmail.com"
+				}
+			]
+		},
+		"personalitiesIdmembers": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"example": ["id1", "id2"]
+		},
+		"travelRequirementIdmembers": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"example": ["id1", "id2"]
+		},
+		"jobEligibleForIdmembers": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"example": ["id1", "id2"]
+		},
+		"scheduleIdmembers": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"example": ["id1", "id2"]
+		},
+		"workPlaceLocationmembers": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"example": ["id1", "id2"]
+		},
+		"locations": {
+			"type": "array",
+			"items": {
+				"type": "object"
+			},
+			"example": [
+				{
+					"location": "test user",
+					"zipCode": "1211212",
+					"latitude": "12.11212",
+					"longitude": "12.11212"
+				}
+			]
+		},
+		"documents": {
+			"type": "array",
+			"items": {
+				"type": "object"
+			},
+			"example": [
+				{
+					"name": "test user",
+					"fileName": "fileName.pdf"
+				}
+			]
+		},
+		"response": {
+			"type": "object",
+			"properties": {
+				"jobPostAddQuestionId": {
+					"type": "string"
+				},
+				"title": {
+					"type": "string"
+				},
+				"responseType": {
+					"type": "string"
+				},
+				"answer": {
+					"type": "string"
+				}
+			},
+			"example": {
+				"jobPostAddQuestionId": "1111",
+				"title": "test",
+				"experience": "2 year",
+				"responseType": "yes",
+				"answer": "text"
+			},
+			"industryIdmembers": {
+				"type": "array",
+				"example": ["id1", "id2"]
+			},
+
+			"employementTypeIdmembers": {
+				"type": "array",
+				"items": {
+					"type": "string"
+				},
+				"example": ["id1", "id2"]
+			},
+			"categoryIdmembers": {
+				"type": "array",
+				"items": {
+					"type": "string"
+				},
+				"example": ["id1", "id2"]
+			},
+			"benefitsIdmembers": {
+				"type": "array",
+				"items": {
+					"type": "string"
+				},
+				"example": ["id1", "id2"]
+			}
+		}
+	}
+}
